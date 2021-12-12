@@ -1,24 +1,12 @@
 from telegram.ext import Updater, MessageHandler, Filters
 from telegram.ext import CommandHandler
-from token import TOKEN
+from bot_token import bot_token
 from info import *
 
 
 def main():
     # Создаём объект updater.
-    # Вместо слова "TOKEN" надо разместить полученный от @BotFather токен
-    REQUEST_KWARGS = {
-        'proxy_url': 'socks5://ip:port',  # Адрес прокси сервера
-        # Опционально, если требуется аутентификация:
-        # 'urllib3 proxy kwargs': {
-        # 'assert_hostname': 'False',
-        # 'cert_reqs': 'CERT_NONE'
-        # 'username': 'user',
-        # 'password': 'password'
-        # }
-    }
-    updater = Updater(TOKEN, use_context=True,
-                      request_kwargs=REQUEST_KWARGS)
+    updater = Updater(bot_token, use_context=True)
 
     # Получаем из него диспетчер сообщений.
     dp = updater.dispatcher
@@ -30,9 +18,9 @@ def main():
     text_handler = MessageHandler(Filters.text, zatichka)
 
     # Регистрируем обработчик в диспетчере.
-    dp.add_handler(text_handler)
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", help))
+    dp.add_handler(text_handler)
     # Запускаем цикл приема и обработки сообщений.
     updater.start_polling()
 
