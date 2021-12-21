@@ -2,6 +2,7 @@ from telegram import ReplyKeyboardMarkup
 import json
 
 
+# Запись в json буквы класса и вопрос о чётности недели
 def week_question(update, context):
     with open('value.json', 'r') as f:
         data = json.load(f)

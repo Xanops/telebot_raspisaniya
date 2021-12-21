@@ -12,6 +12,7 @@ def para(value):
     elif fourthpara == '':
         fourthpara = value
 
+
 def get_rasp(week, clas, letter):
     global firstpara, secondpara, thirdpara, fourthpara
     wb = load_workbook("rasp.xlsx")
@@ -33,7 +34,6 @@ def get_rasp(week, clas, letter):
 '''
     days = ['понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота']
 
-
     count = 0
     for j in range(6):
         firstpara = ''
@@ -45,9 +45,9 @@ def get_rasp(week, clas, letter):
             number = paru[count]
             if rasp[f'{column}{number}'].value == "нет":
                 para(' ')
-            elif rasp[f'{column}{number}'].value == None:
+            elif rasp[f'{column}{number}'].value is None:
                 if letter != "С":
-                    if rasp[f'{bigletters[columnn - 1]}{number}'].value == None:
+                    if rasp[f'{bigletters[columnn - 1]}{number}'].value is None:
                         para(' ')
                     else:
                         para(f"{rasp[f'{bigletters[columnn - 1]}{number}'].value} {rasp[f'{bigletters[columnn - 1]}{number + 1}'].value}")
