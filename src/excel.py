@@ -4,7 +4,8 @@ wb = load_workbook("rasp.xlsx")
 wbb = wb.active
 week = "нечет"
 clas = "10"
-letter = "П2"
+letter = "С"
+letter = letter.upper()
 args = {"week": week, "class": clas, "letter": letter}
 rasp = wb[f'{args["class"]}-е кл {args["week"]}']
 bigletters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U',
@@ -47,10 +48,13 @@ for j in range(6):
         if rasp[f'{column}{number}'].value == "нет":
             para(' ')
         elif rasp[f'{column}{number}'].value == None:
-            if rasp[f'{bigletters[columnn - 1]}{number}'].value == None:
-                para(' ')
+            if letter != "С":
+                if rasp[f'{bigletters[columnn - 1]}{number}'].value == None:
+                    para(' ')
+                else:
+                    para(f"{rasp[f'{bigletters[columnn - 1]}{number}'].value} {rasp[f'{bigletters[columnn - 1]}{number + 1}'].value}")
             else:
-                para(f"{rasp[f'{bigletters[columnn - 1]}{number}'].value} {rasp[f'{bigletters[columnn - 1]}{number + 1}'].value}")
+                para(' ')
         else:
             para(f"{rasp[f'{column}{number}'].value} {rasp[f'{column}{number + 1}'].value}")
         count += 1
