@@ -1,4 +1,6 @@
 from telegram import ReplyKeyboardMarkup
+from excel import get_rasp
+import json
 
 
 def start(update, context):
@@ -19,7 +21,15 @@ def any_other_messages(update, context):
 
 
 def pokas_rasp(update, context):
-    update.message.reply_text("лол, фиг тебе")
+    with open('value.json', 'r') as f:
+        data = json.load(f)
+    clas = data["clas"]
+    letter = data["letter"]
+    if update.message.text in ["чётная", "Чётная", "четная", "Четная"]:
+        week = "чет"
+    elif update.message.text in ["нечётная", "Нечётная", "нечетная", "Нечетная"]:
+        week = "нечет"
+    update.message.reply_text(get_rasp(week, clas, letter))
 
 
 def stop(update, context):
