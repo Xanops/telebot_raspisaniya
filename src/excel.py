@@ -3,8 +3,8 @@ from openpyxl import Workbook, load_workbook
 wb = load_workbook("rasp.xlsx")
 wbb = wb.active
 week = "нечет"
-clas = "8"
-letter = "О2"
+clas = "10"
+letter = "П2"
 args = {"week": week, "class": clas, "letter": letter}
 rasp = wb[f'{args["class"]}-е кл {args["week"]}']
 bigletters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U',
@@ -45,10 +45,10 @@ for j in range(6):
     for i in range(4):
         number = paru[count]
         if rasp[f'{column}{number}'].value == "нет":
-            para('')
+            para(' ')
         elif rasp[f'{column}{number}'].value == None:
             if rasp[f'{bigletters[columnn - 1]}{number}'].value == None:
-                para('')
+                para(' ')
             else:
                 para(f"{rasp[f'{bigletters[columnn - 1]}{number}'].value} {rasp[f'{bigletters[columnn - 1]}{number + 1}'].value}")
         else:
