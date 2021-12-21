@@ -1,7 +1,6 @@
-from openpyxl import Workbook, load_workbook
+from openpyxl import load_workbook
 
 wb = load_workbook("rasp.xlsx")
-wbb = wb.active
 week = "нечет"
 clas = "10"
 letter = "С"
